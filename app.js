@@ -26,7 +26,7 @@ app.post('/correlate', async (req, res) => {
         if (close1.length !== close2.length) throw new Error("Mismatched data length");
 
         const correlation = math.corr(close1, close2);
-        res.render('index', { correlation, error: null });
+        res.render('index', { correlation, stock1: stock1, stock2: stock2, error: null });
     } catch (err) {
         res.render('index', { correlation: null, error: 'Error fetching or calculating data.' });
     }
